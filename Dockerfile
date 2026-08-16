@@ -8,11 +8,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
-COPY requirements.txt /app/backend/requirements.txt
+COPY backend/requirements.txt /app/backend/requirements.txt
 RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
-# Copy backend app and supporting files from the context
-COPY app /app/backend/app
+# Copy source and data folders
+COPY backend /app/backend
 COPY data /app/data
 COPY index_knowledge_base.py /app/index_knowledge_base.py
 COPY create_tables.py /app/create_tables.py
