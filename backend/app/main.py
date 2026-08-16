@@ -49,6 +49,19 @@ async def lifespan(app: FastAPI):
         print("SentinelAI database tables verified/created successfully.")
     except Exception as e:
         print(f"Failed to auto-create database tables on startup: {e}")
+
+    # Index RAG knowledge base on startup
+    try:
+        from backend.app.rag.indexer import index_knowledge_base
+        kb_path = "backend/data/knowledge_base"
+        import os
+        if not os.path.exists(kb_path):
+            kb_path = "data/knowledge_base"
+        result = index_knowledge_base(kb_path)
+        print(f"RAG Knowledge Base indexed: {result}")
+    except Exception as e:
+        print(f"Failed to index knowledge base on startup: {e}")
+
     yield
 
 app = FastAPI(

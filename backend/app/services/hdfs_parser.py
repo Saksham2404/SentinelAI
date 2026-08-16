@@ -135,13 +135,25 @@ def parse_hdfs_line(line: str, line_index: int = 0) -> tuple[LogEvent | None, st
     block_match = BLOCK_ID_PATTERN.search(message)
     block_id = block_match.group(1) if block_match else None
 
+    # Extract status_code from message (e.g., "- 500 -", "200", "504")
+    status_code = None
+    status_match = re.search(r"\b([1-5]\d{2})\b", message)
+    if status_match:
+        status_code = int(status_match.group(1))
+
+    # Extract response_time_ms from message (e.g., "120ms", "3200ms", "in 1200ms")
+    response_time_ms = None
+    rt_match = re.search(r"(\d+(?:\.\d+)?)\s*ms\b", message, re.IGNORECASE)
+    if rt_match:
+        response_time_ms = float(rt_match.group(1))
+
     event = LogEvent(
         timestamp=timestamp,
         log_level=level,
         service=service,
         message=message,
-        status_code=None,
-        response_time_ms=None
+        status_code=status_code,
+        response_time_ms=response_time_ms
     )
 
     return event, block_id
