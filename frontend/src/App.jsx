@@ -167,12 +167,15 @@ function App() {
   // Settings Management
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [apiBase, setApiBase] = useState(() => {
+    if (import.meta.env.VITE_API_BASE_URL) {
+      const envUrl = import.meta.env.VITE_API_BASE_URL;
+      return envUrl.endsWith("/") ? envUrl.slice(0, -1) : envUrl;
+    }
     const saved = localStorage.getItem("apiBaseUrl");
-    if (saved && saved !== "http://127.0.0.1:8001") {
+    if (saved) {
       return saved.endsWith("/") ? saved.slice(0, -1) : saved;
     }
-    const envUrl = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8001";
-    return envUrl.endsWith("/") ? envUrl.slice(0, -1) : envUrl;
+    return "http://127.0.0.1:8001";
   });
   const [tempApiBase, setTempApiBase] = useState(apiBase);
 
