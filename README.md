@@ -66,7 +66,7 @@ Run the entire stack (PostgreSQL database, FastAPI backend, React frontend) with
    DB_PORT=5432
    DB_NAME=sentinelai_db
    DB_USER=postgres
-   DB_PASSWORD=Saksham02
+   DB_PASSWORD=your_secure_password
    ```
 
 2. Start the multi-container stack:
