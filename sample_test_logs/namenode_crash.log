@@ -1,0 +1,13 @@
+2026-08-17 10:10:01 INFO AuthService Token verified successfully - 200 - 45ms
+2026-08-17 10:10:05 WARNING AuthService High rate of authentication requests: 1200/sec
+2026-08-17 10:10:10 ERROR AuthService Decryption failure on user session key
+2026-08-17 10:10:15 ERROR AuthService User credential check timed out - 401 - 3000ms
+2026-08-17 10:10:20 WARNING AuthService Rate limiting active for IP 192.168.1.104
+2026-08-17 10:10:25 INFO PaymentService Request completed - 200 - 110ms
+2026-08-17 10:10:30 CRITICAL AuthService Keystore service became unresponsive!
+2026-08-17 10:10:35 CRITICAL AuthService Heap memory allocation limit reached (2048MB)!
+2026-08-17 10:10:40 CRITICAL AuthService OutOfMemoryError: GC overhead limit exceeded
+2026-08-17 10:10:45 ERROR PaymentService Authentication token check failed - 401 - 120ms
+2026-08-17 10:10:50 ERROR NotificationService Authentication service unreachable
+2026-08-17 10:10:55 INFO DatabaseService Query executed successfully - 200 - 18ms
+2026-08-17 10:11:00 INFO PaymentService Backup auth mode activated - 200 - 150ms

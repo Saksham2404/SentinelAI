@@ -24,6 +24,7 @@ htmlcov/
 # Logs
 # =========================
 *.log
+!sample_test_logs/*.log
 logs/
 
 # =========================
