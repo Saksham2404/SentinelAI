@@ -15,22 +15,17 @@ class GeminiService:
     def __init__(self):
         load_dotenv()
 
-        api_key = os.getenv("GEMINI_API_KEY")
-        self.model_name = os.getenv("GEMINI_MODEL")
+        self.api_key = os.getenv("GEMINI_API_KEY")
+        self.model_name = os.getenv("GEMINI_MODEL") or "gemini-3.5-flash"
+        self.client = None
 
-        if not api_key:
-            raise ValueError(
-                "GEMINI_API_KEY was not found."
-            )
-
-        if not self.model_name:
-            raise ValueError(
-                "GEMINI_MODEL was not found."
-            )
-
-        self.client = genai.Client(
-            api_key=api_key
-        )
+        if self.api_key:
+            try:
+                self.client = genai.Client(
+                    api_key=self.api_key
+                )
+            except Exception as e:
+                print(f"Failed to initialize GenAI Client: {e}")
 
     def generate_investigation(
         self,
@@ -94,6 +89,14 @@ Return a clear investigation with these sections:
 Clearly distinguish between facts detected by SentinelAI
 and hypotheses inferred from the available evidence.
 """
+
+        if not self.client or not self.api_key:
+            return (
+                "### Investigation Report (Fallback Mode)\n\n"
+                "**Note:** Automated analysis via Gemini is currently unavailable because the API key is not configured.\n\n"
+                "Please configure `GEMINI_API_KEY` on your backend server environment variables "
+                "to enable automated root cause analysis reports."
+            )
 
         try:
             response = self.client.models.generate_content(
