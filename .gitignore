@@ -1,0 +1,60 @@
+# =========================
+# Environment & Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Python
+# =========================
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# ML Models / Generated Files
+# =========================
+*.joblib
+*.pkl
+
+# =========================
+# ChromaDB / Vector Database
+# =========================
+chroma_db/
+chromadb/
+vector_store/
+
+# =========================
+# Node / React
+# =========================
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
