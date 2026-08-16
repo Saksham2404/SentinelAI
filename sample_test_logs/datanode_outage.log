@@ -1,13 +1,13 @@
-081110 100500 1001 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: blk_10011
-081110 100505 1002 INFO dfs.DataNode: Receiving block blk_10011
-081110 100510 WARNING dfs.DataNode: Latency spike detected: connection acquired in 1200ms
-081110 100515 ERROR dfs.DataNode: Connection pool timeout. Active: 50/50, Idle: 0, Pending: 15
-081110 100520 ERROR dfs.FSNamesystem: Request failed - 500 - 3200ms
-081110 100525 WARNING dfs.DataNode: Retrying connection to dfs-master-01:50010...
-081110 100530 ERROR dfs.DataNode: Connection refused after 3 retries
-081110 100535 CRITICAL dfs.FSNamesystem: Multiple database timeouts detected - 504 - 5000ms
-081110 100540 ERROR dfs.FSNamesystem: API Gateway reported socket timeout - 504 - 6000ms
-081110 100545 WARNING dfs.DataNode: Delayed delivery: backend service unavailable - 120ms
-081110 100550 INFO dfs.FSNamesystem: User logged out successfully
-081110 100555 ERROR dfs.DataNode: Failed to reconnect, switching to read-only backup
-081110 100600 INFO dfs.DataNode: Connection to backup successful - 200 - 35ms
+2026-08-17 10:05:01 INFO PaymentService Request completed - 200 - 120ms
+2026-08-17 10:05:05 INFO AuthService Token verified successfully - 200 - 45ms
+2026-08-17 10:05:10 WARNING DatabaseService Latency spike detected: connection acquired in 1200ms
+2026-08-17 10:05:15 ERROR DatabaseService Connection pool timeout. Active: 50/50, Idle: 0, Pending: 15
+2026-08-17 10:05:20 ERROR PaymentService Request failed - 500 - 3200ms
+2026-08-17 10:05:25 WARNING DatabaseService Retrying connection to db-master-01...
+2026-08-17 10:05:30 ERROR DatabaseService Connection refused after 3 retries
+2026-08-17 10:05:35 CRITICAL PaymentService Multiple database timeouts detected - 504 - 5000ms
+2026-08-17 10:05:40 ERROR PaymentService API Gateway reported socket timeout - 504 - 6000ms
+2026-08-17 10:05:45 WARNING NotificationService Delayed delivery: backend service unavailable - 120ms
+2026-08-17 10:05:50 INFO AuthService User logged out successfully
+2026-08-17 10:05:55 ERROR DatabaseService Failed to reconnect, switching to read-only backup
+2026-08-17 10:06:00 INFO DatabaseService Connection to backup successful - 200 - 35ms
