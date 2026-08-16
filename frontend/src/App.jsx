@@ -166,7 +166,14 @@ function App() {
 
   // Settings Management
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [apiBase, setApiBase] = useState(() => localStorage.getItem("apiBaseUrl") || "http://127.0.0.1:8001");
+  const [apiBase, setApiBase] = useState(() => {
+    const saved = localStorage.getItem("apiBaseUrl");
+    if (saved && saved !== "http://127.0.0.1:8001") {
+      return saved.endsWith("/") ? saved.slice(0, -1) : saved;
+    }
+    const envUrl = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8001";
+    return envUrl.endsWith("/") ? envUrl.slice(0, -1) : envUrl;
+  });
   const [tempApiBase, setTempApiBase] = useState(apiBase);
 
   // Sync tempApiBase when modal is opened
@@ -532,8 +539,9 @@ function App() {
               </button>
               <button
                 onClick={() => {
-                  setApiBase(tempApiBase);
-                  localStorage.setItem("apiBaseUrl", tempApiBase);
+                  const sanitized = tempApiBase.endsWith("/") ? tempApiBase.slice(0, -1) : tempApiBase;
+                  setApiBase(sanitized);
+                  localStorage.setItem("apiBaseUrl", sanitized);
                   setIsSettingsOpen(false);
                   showToast("Settings saved successfully!");
                 }}
