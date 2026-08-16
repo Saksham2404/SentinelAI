@@ -13,6 +13,7 @@ RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
 # Copy backend app and supporting files from the context
 COPY app /app/backend/app
+COPY models /app/backend/models
 COPY data /app/data
 COPY index_knowledge_base.py /app/index_knowledge_base.py
 COPY create_tables.py /app/create_tables.py

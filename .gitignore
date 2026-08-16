@@ -30,6 +30,7 @@ logs/
 # ML Models / Generated Files
 # =========================
 *.joblib
+!backend/models/anomaly_detector.joblib
 *.pkl
 
 # =========================
